@@ -14,7 +14,7 @@ folder1,folder2,folder3
 .exe-folder3
 'other'-folder3
 ````
-#contributing
+# contributing
 all pulls and pushed are  welcome
 I don't really have any problem with anything as long  as it's not malicious
  
