@@ -8,6 +8,7 @@ class File:
         self.directory = r.readline().strip()
         self.folders = r.readline().strip().split(",")
         self.dict = {}
+        self.size = len(self.folders)
         line = r.readline().strip()
         while line != "":
             spliter = line.split("-")
@@ -32,7 +33,7 @@ class File:
                     self.move_file(s)
 
     def unsorted(self):
-        return len(self.folders) != self.get_count()
+        return self.size != self.get_count()
 
     def move_file(self, nam):
         name = nam

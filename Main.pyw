@@ -1,7 +1,7 @@
 import os
 import File
 import threading
-
+import time
 
 def sorted(name):
     f = File.File(name)
@@ -9,6 +9,7 @@ def sorted(name):
     while True:
         if f.unsorted():
             f.sort()
+        time.sleep(2)
 
 
 for s in os.listdir():
