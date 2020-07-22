@@ -9,10 +9,10 @@ def sorted(name):
     while True:
         if f.unsorted():
             f.sort()
-        time.sleep(2)
+        time.sleep(5)
 
 
-for s in os.listdir():
+for s in os.listdir("sorts"):
     if os.path.splitext(s)[1] == '.sort':
         x = threading.Thread(target=sorted(s), args=(1,))
         x.daemon = True

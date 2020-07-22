@@ -4,7 +4,7 @@ import shutil
 
 class File:
     def __init__(self, name):
-        r = open(name)
+        r = open("sorts/" + name)
         self.directory = r.readline().strip()
         self.folders = r.readline().strip().split(",")
         self.dict = {}
@@ -24,6 +24,9 @@ class File:
         for s in self.folders:
             if not (s in os.listdir(self.directory)):
                 os.mkdir(self.directory + "/" + s)
+        for s in self.folders:
+            for r in os.listdir(self.directory + "/" + s):
+                shutil.move(self.directory + "/" + s + "/" + r, self.directory)
         self.sort()
 
     def sort(self):
@@ -48,7 +51,7 @@ class File:
         location = self.directory + "/" + location
         i = 1
         while os.path.exists(location + "/" + name):
-            os.rename(self.directory + "/" + name, self.directory + "/" + f[0] + "(" + str(i) +")" + f[1])
-            name = f[0] + "(" + str(i) +")" + f[1]
+            os.rename(self.directory + "/" + name, self.directory + "/" + f[0] + "(" + str(i) + ")" + f[1])
+            name = f[0] + "(" + str(i) + ")" + f[1]
             i += 1
         shutil.move(self.directory + "/" + name, location)
