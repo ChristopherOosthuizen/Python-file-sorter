@@ -3,7 +3,7 @@ import shutil
 
 
 class File:
-    def __init__(self,name):
+    def __init__(self, name):
         r = open(name)
         self.directory = r.readline().strip()
         self.folders = r.readline().strip().split(",")
@@ -34,14 +34,20 @@ class File:
     def unsorted(self):
         return len(self.folders) != self.get_count()
 
-    def move_file(self, name):
+    def move_file(self, nam):
+        name = nam
         f = os.path.splitext(name)
-        if os.path.isdir(self.directory+"/"+name):
+        if os.path.isdir(self.directory + "/" + name):
             location = self.dict["'dir'"]
         else:
             if f[1] in self.dict:
                 location = self.dict[f[1]]
             else:
                 location = self.dict["'other'"]
-        location = self.directory+"/"+location
-        shutil.move(self.directory+"/"+name, location)
+        location = self.directory + "/" + location
+        i = 1
+        while os.path.exists(location + "/" + name):
+            os.rename(self.directory + "/" + name, self.directory + "/" + f[0] + "(" + str(i) +")" + f[1])
+            name = f[0] + "(" + str(i) +")" + f[1]
+            i += 1
+        shutil.move(self.directory + "/" + name, location)
