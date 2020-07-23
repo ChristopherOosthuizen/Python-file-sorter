@@ -1,6 +1,9 @@
-example
-documents,other,dirs,undefined
+C:\Users\Chris\Downloads
+documents,exectuables,dirs,undefined,images,zips
 .txt-documents
-.div-other
+.exe-exectuables
+.jpg-images
 'dir'-dirs
+.zip-zips
+.msi-exectuables
 'other'-undefined

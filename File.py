@@ -36,22 +36,24 @@ class File:
                     self.move_file(s)
 
     def unsorted(self):
+
         return self.size != self.get_count()
 
     def move_file(self, nam):
         name = nam
         f = os.path.splitext(name)
-        if os.path.isdir(self.directory + "/" + name):
-            location = self.dict["'dir'"]
-        else:
-            if f[1] in self.dict:
-                location = self.dict[f[1]]
+        if f[1] != ".tmp" and f[1] != ".crdownload" :
+            if os.path.isdir(self.directory + "/" + name):
+                location = self.dict["'dir'"]
             else:
-                location = self.dict["'other'"]
-        location = self.directory + "/" + location
-        i = 1
-        while os.path.exists(location + "/" + name):
-            os.rename(self.directory + "/" + name, self.directory + "/" + f[0] + "(" + str(i) + ")" + f[1])
-            name = f[0] + "(" + str(i) + ")" + f[1]
-            i += 1
-        shutil.move(self.directory + "/" + name, location)
+                if f[1] in self.dict:
+                    location = self.dict[f[1]]
+                else:
+                    location = self.dict["'other'"]
+            location = self.directory + "/" + location
+            i = 1
+            while os.path.exists(location + "/" + name):
+                os.rename(self.directory + "/" + name, self.directory + "/" + f[0] + "(" + str(i) + ")" + f[1])
+                name = f[0] + "(" + str(i) + ")" + f[1]
+                i += 1
+            shutil.move(self.directory + "/" + name, location)
