@@ -7,6 +7,7 @@ class File:
         r = open("sorts/" + name)
         self.directory = r.readline().strip()
         self.folders = r.readline().strip().split(",")
+        print(self.folders)
         self.dict = {}
         self.size = len(self.folders)
         line = r.readline().strip()
@@ -42,7 +43,7 @@ class File:
     def move_file(self, nam):
         name = nam
         f = os.path.splitext(name)
-        if f[1] != ".tmp" and f[1] != ".crdownload" :
+        if f[1] != ".tmp" and f[1] != ".crdownload" and not (name in self.folders):
             if os.path.isdir(self.directory + "/" + name):
                 location = self.dict["'dir'"]
             else:

@@ -1,9 +1,11 @@
 C:\Users\Chris\Downloads
-documents,exectuables,dirs,undefined,images,zips
+documents,exectuables,dirs,undefined,images,zips,audio
 .txt-documents
 .exe-exectuables
 .jpg-images
 'dir'-dirs
 .zip-zips
 .msi-exectuables
+.vsix-exectuables
+.mp4-audio
 'other'-undefined
